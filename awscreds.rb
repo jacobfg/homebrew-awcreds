@@ -6,19 +6,19 @@ require_relative "./lib/private_strategy.rb"
 class Awscreds < Formula
   desc "AWS Tools for managing credentials"
   homepage "https://github.com/jacobfg/awscreds"
-  version "0.4.0"
+  version "0.4.1"
   license "Apache-2.0"
   bottle :unneeded
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/jacobfg/awscreds/releases/download/0.4.0/awscreds_0.4.0_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "34db26b7d305eb02afe1fd58303491aa019da9c87034996860aa4dee39e0b601"
+      url "https://github.com/jacobfg/awscreds/releases/download/0.4.1/awscreds_0.4.1_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "a447fccac9d8fc039884be9d2f57588e748dc8c7f2a774afba049be8a3f7e6ff"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/jacobfg/awscreds/releases/download/0.4.0/awscreds_0.4.0_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "136066ffdc73222de4d87ae32677ffb149cca908097eb95ce0e7cbd83223ef55"
+      url "https://github.com/jacobfg/awscreds/releases/download/0.4.1/awscreds_0.4.1_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "f180df045ffc2a1b81251f9455006be25cded4e9a38af97228a815f89f247ef8"
     end
   end
 
@@ -26,10 +26,10 @@ class Awscreds < Formula
     bin.install "awscreds"
     mkdir_p "#{share}/zsh/site-functions"
     oldpath = "#{prefix}/bin"
-    ENV['PATH'] = "#{prefix}/bin"
+    ENV["PATH"] = "#{prefix}/bin"
     output = %x[awscreds completion zsh]
     File.write("#{share}/zsh/site-functions/_awscreds", output)
-    ENV['PATH'] = oldpath
+    ENV["PATH"] = oldpath
   end
 
   test do
