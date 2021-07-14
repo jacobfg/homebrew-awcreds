@@ -14,11 +14,11 @@ class Awscreds < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/jacobfg/awscreds/releases/download/0.4.0/awscreds_0.4.0_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "cc11aa25b22715b23c46b49aa383e06a634d9d683b77192fbc68248afd433a79"
+      sha256 "34db26b7d305eb02afe1fd58303491aa019da9c87034996860aa4dee39e0b601"
     end
     if Hardware::CPU.arm?
       url "https://github.com/jacobfg/awscreds/releases/download/0.4.0/awscreds_0.4.0_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "284f4644fe87b3f6e8b956d79980baab0ef5661f66bf1b3bbd6ade57a3cede9c"
+      sha256 "136066ffdc73222de4d87ae32677ffb149cca908097eb95ce0e7cbd83223ef55"
     end
   end
 
