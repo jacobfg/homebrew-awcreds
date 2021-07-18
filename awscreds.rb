@@ -6,19 +6,19 @@ require_relative "./lib/private_strategy.rb"
 class Awscreds < Formula
   desc "AWS Tools for managing credentials"
   homepage "https://github.com/jacobfg/awscreds"
-  version "0.4.2"
+  version "0.4.3"
   license "Apache-2.0"
   bottle :unneeded
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/jacobfg/awscreds/releases/download/0.4.2/awscreds_0.4.2_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4415c83d9d332a77e03837e7776f5e384608c7fe52e09dec3fcc3e9642577715"
+      url "https://github.com/jacobfg/awscreds/releases/download/0.4.3/awscreds_0.4.3_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "fd48ec561dc42207fc53c2a1a545c0cb81508ec39b3e76addfce6dbb01fe6d1c"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/jacobfg/awscreds/releases/download/0.4.2/awscreds_0.4.2_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "e14cf449f850d269ca7dc0574da178556ed1043f10aa112e849c68b921c448e3"
+      url "https://github.com/jacobfg/awscreds/releases/download/0.4.3/awscreds_0.4.3_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "32cf90e2f8c7e722ea8388440ae36d5bfd5ec9faadddb7b84cfce73b0561a905"
     end
   end
 
