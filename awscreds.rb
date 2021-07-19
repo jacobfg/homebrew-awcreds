@@ -14,11 +14,11 @@ class Awscreds < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/jacobfg/awscreds/releases/download/0.4.3/awscreds_0.4.3_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "692c40a7cefe7673404991cbf24226eb6df23fa0890718be74f80f85a6f9c707"
+      sha256 "9b3b2cb741cef9fcb0ff95feab8eb71adb8e48876b999c4217e9ff6cf1a82c5d"
     end
     if Hardware::CPU.arm?
       url "https://github.com/jacobfg/awscreds/releases/download/0.4.3/awscreds_0.4.3_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "63ef1a12204346f5617ab30dd459c5e0b9aa080ee4e33e8186c14dbe8896d80c"
+      sha256 "8d14727e547706b5a0dd23016cd58fd6481f7a18e7398be57f06db8d937e2a43"
     end
   end
 
@@ -33,7 +33,7 @@ class Awscreds < Formula
     # system "go", "build", *std_go_args(ldflags: ldflags)
 
     bin.install "awscreds"
-    bash_completion.install "completions/awscreds-completion.bash"
+    bash_completion.install "completions/awscreds.bash"
     fish_completion.install "completions/awscreds.fish"
     zsh_completion.install "completions/awscreds.zsh" => "_awscreds"
 
