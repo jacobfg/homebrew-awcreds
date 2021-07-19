@@ -14,25 +14,37 @@ class Awscreds < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/jacobfg/awscreds/releases/download/0.4.3/awscreds_0.4.3_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "fd48ec561dc42207fc53c2a1a545c0cb81508ec39b3e76addfce6dbb01fe6d1c"
+      sha256 "692c40a7cefe7673404991cbf24226eb6df23fa0890718be74f80f85a6f9c707"
     end
     if Hardware::CPU.arm?
       url "https://github.com/jacobfg/awscreds/releases/download/0.4.3/awscreds_0.4.3_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "32cf90e2f8c7e722ea8388440ae36d5bfd5ec9faadddb7b84cfce73b0561a905"
+      sha256 "63ef1a12204346f5617ab30dd459c5e0b9aa080ee4e33e8186c14dbe8896d80c"
     end
   end
 
   def install
+    # ldflags = %W[
+    #   -s -w
+    #   -X main.version=#{version}
+    #   -X main.commit=#{Utils.git_head}
+    #   -X main.date=#{time.rfc3339}
+    #   -X main.builtBy=#{tap.user}
+    # ].join(" ")
+    # system "go", "build", *std_go_args(ldflags: ldflags)
+
     bin.install "awscreds"
-    mkdir_p "#{share}/zsh/site-functions"
-    oldpath = "#{prefix}/bin"
-    ENV["PATH"] = "#{prefix}/bin"
-    output = %x[awscreds completion zsh]
-    File.write("#{share}/zsh/site-functions/_awscreds", output)
-    ENV["PATH"] = oldpath
+    bash_completion.install "completions/awscreds-completion.bash"
+    fish_completion.install "completions/awscreds.fish"
+    zsh_completion.install "completions/awscreds.zsh" => "_awscreds"
+
+    prefix.install_metafiles
   end
 
   test do
     system "#{bin}/awscreds version"
+    # test version to ensure that version number is embedded in binary
+    # somehow add os/arch in version output
+    assert_match "awscreds: 0.4.3 (374a40c)", shell_output("#{bin}/awscreds version")
+    # assert_match "built by #{tap.user}", shell_output("#{bin}/awscreds version")
   end
 end
