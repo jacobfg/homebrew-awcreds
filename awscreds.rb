@@ -6,45 +6,62 @@ require_relative "./lib/private_strategy.rb"
 class Awscreds < Formula
   desc "AWS Tools for managing credentials"
   homepage "https://github.com/jacobfg/awscreds"
-  version "0.4.4"
+  version "0.4.5"
   license "Apache-2.0"
-  bottle :unneeded
   depends_on :macos
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/jacobfg/awscreds/releases/download/0.4.4/awscreds_0.4.4_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "0667333274e5746cbd44325de3dc532e92898250913df6ef7146a65004763915"
-    end
     if Hardware::CPU.arm?
-      url "https://github.com/jacobfg/awscreds/releases/download/0.4.4/awscreds_0.4.4_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "c35620ba06f53f7ede8962e8b1b79160c40fa628b4db20d769d7d00f70a550a3"
+      url "https://github.com/jacobfg/awscreds/releases/download/0.4.5/awscreds_0.4.5_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "a723262997cdb18c9d15285361cd31f991311a0d85f312c87e179aeb35fc6830"
+
+      def install
+        # ldflags = %W[
+        #   -s -w
+        #   -X main.version=#{version}
+        #   -X main.commit=#{Utils.git_head}
+        #   -X main.date=#{time.rfc3339}
+        #   -X main.builtBy=#{tap.user}
+        # ].join(" ")
+        # system "go", "build", *std_go_args(ldflags: ldflags)
+
+        bin.install "awscreds"
+        bash_completion.install "completions/awscreds.bash"
+        fish_completion.install "completions/awscreds.fish"
+        zsh_completion.install "completions/awscreds.zsh" => "_awscreds"
+
+        prefix.install_metafiles
+      end
     end
-  end
+    if Hardware::CPU.intel?
+      url "https://github.com/jacobfg/awscreds/releases/download/0.4.5/awscreds_0.4.5_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "70011ad87ef77e4521863c99801c4edda763dba9820117fa12c8402043099518"
 
-  def install
-    # ldflags = %W[
-    #   -s -w
-    #   -X main.version=#{version}
-    #   -X main.commit=#{Utils.git_head}
-    #   -X main.date=#{time.rfc3339}
-    #   -X main.builtBy=#{tap.user}
-    # ].join(" ")
-    # system "go", "build", *std_go_args(ldflags: ldflags)
+      def install
+        # ldflags = %W[
+        #   -s -w
+        #   -X main.version=#{version}
+        #   -X main.commit=#{Utils.git_head}
+        #   -X main.date=#{time.rfc3339}
+        #   -X main.builtBy=#{tap.user}
+        # ].join(" ")
+        # system "go", "build", *std_go_args(ldflags: ldflags)
 
-    bin.install "awscreds"
-    bash_completion.install "completions/awscreds.bash"
-    fish_completion.install "completions/awscreds.fish"
-    zsh_completion.install "completions/awscreds.zsh" => "_awscreds"
+        bin.install "awscreds"
+        bash_completion.install "completions/awscreds.bash"
+        fish_completion.install "completions/awscreds.fish"
+        zsh_completion.install "completions/awscreds.zsh" => "_awscreds"
 
-    prefix.install_metafiles
+        prefix.install_metafiles
+      end
+    end
   end
 
   test do
     system "#{bin}/awscreds version"
     # test version to ensure that version number is embedded in binary
     # somehow add os/arch in version output
-    assert_match "awscreds: 0.4.4 (0b66f17)", shell_output("#{bin}/awscreds version")
+    assert_match "awscreds: 0.4.5 (26a7f0a)", shell_output("#{bin}/awscreds version")
     # assert_match "built by #{tap.user}", shell_output("#{bin}/awscreds version")
   end
 end
