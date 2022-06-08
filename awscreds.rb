@@ -6,33 +6,33 @@ require_relative "./lib/private_strategy.rb"
 class Awscreds < Formula
   desc "AWS Tools for managing credentials"
   homepage "https://github.com/jacobfg/awscreds"
-  version "0.4.11"
+  version "0.4.12"
   license "Apache-2.0"
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/jacobfg/awscreds/releases/download/0.4.11/awscreds_0.4.11_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "6ff9f0c9c98cc770f4f3735eef5e34aaf1045007fb0118ee8b0279bce85d664b"
+      url "https://github.com/jacobfg/awscreds/releases/download/0.4.12/awscreds_0.4.12_darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "41309a2cd35b87fa33cb58ca27e800913591187f51248072ef8de070e5f1ff78"
 
       def install
         bin.install "awscreds"
         bash_completion.install "completions/awscreds.bash" => "awscreds"
         zsh_completion.install "completions/awscreds.zsh" => "_awscreds"
         fish_completion.install "completions/awscreds.fish"
-        man1.install "manpages/awscreds.1.gz"
+        # man1.install "manpages/awscreds.1.gz"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/jacobfg/awscreds/releases/download/0.4.11/awscreds_0.4.11_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "1f5aa84c2f2e0f9f0ef29ba4a6538630d0955c7d19c97b0e65df3115bf443faa"
+      url "https://github.com/jacobfg/awscreds/releases/download/0.4.12/awscreds_0.4.12_darwin_amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "53f71c540dc067cfb4a0e909d5a1e022d4e9dc46fa296b305ca4a60752ad3b6a"
 
       def install
         bin.install "awscreds"
         bash_completion.install "completions/awscreds.bash" => "awscreds"
         zsh_completion.install "completions/awscreds.zsh" => "_awscreds"
         fish_completion.install "completions/awscreds.fish"
-        man1.install "manpages/awscreds.1.gz"
+        # man1.install "manpages/awscreds.1.gz"
       end
     end
   end
@@ -41,7 +41,7 @@ class Awscreds < Formula
     system "#{bin}/awscreds version"
     # test version to ensure that version number is embedded in binary
     # somehow add os/arch in version output
-    assert_match "awscreds: 0.4.11 (e7eb637)", shell_output("#{bin}/awscreds version")
+    assert_match "awscreds: 0.4.12 (dfb9643)", shell_output("#{bin}/awscreds version")
     # assert_match "built by #{tap.user}", shell_output("#{bin}/awscreds version")
   end
 end
