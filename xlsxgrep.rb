@@ -13,24 +13,24 @@ class Xlsxgrep < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/jacobfg/xlsxgrep/releases/download/0.0.1/xlsxgrep_0.0.1_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "dd049b7c87c7d7a1299c8336e534dd1b2ccca1b12c35f8ecc35352921331ea40"
+      sha256 "80d9d4341b41da5cdb43bf71a465e83a9fe1efe033eb6cf077437a93d8282c7f"
 
       def install
-        bin.install "xslxgrep"
+        bin.install "xlsxgrep"
       end
     end
     if Hardware::CPU.intel?
       url "https://github.com/jacobfg/xlsxgrep/releases/download/0.0.1/xlsxgrep_0.0.1_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "1b45a4291cb3668c30b833a540c48e5a9a3f84a61960f0ecaa513b9676e03d8a"
+      sha256 "6b2546c7245d100c4054b25e35897d82e7a20ffa04e993f616d1f2c15050ecae"
 
       def install
-        bin.install "xslxgrep"
+        bin.install "xlsxgrep"
       end
     end
   end
 
   test do
     system "#{bin}/xlsxgrep version"
-    assert_match "xlsxgrep: 0.0.1 (c6b80b1)", shell_output("#{bin}/xlsxgrep version")
+    assert_match "xlsxgrep: 0.0.1 (b1b6703)", shell_output("#{bin}/xlsxgrep -version")
   end
 end
