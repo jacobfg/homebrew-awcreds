@@ -22,6 +22,11 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
     "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
   end
 
+  def resolve_url_basename_time_file_size(url, timeout: nil)
+    url = download_url
+    super
+  end
+
   private
 
   # def validate_github_repository_access!
