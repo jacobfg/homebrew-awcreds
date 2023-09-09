@@ -6,32 +6,26 @@ require_relative "./lib/private_strategy.rb"
 class Awsudo < Formula
   desc "AWS Tools running a CLI program as a different AWS profile / ARN"
   homepage "https://github.com/jacobfg/awsudo"
-  version "0.0.2"
+  version "0.0.3"
   license "Apache-2.0"
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/jacobfg/awsudo/releases/download/0.0.2/awsudo_0.0.2_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f181eb2e6de7c6e755c98119c69eb4f59848f917c3a8ee9a3a2321f7cc0211ea"
+      url "https://github.com/jacobfg/awsudo/releases/download/0.0.3/awsudo_0.0.3_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "62cdf9f1045e7f91a1fd098ce91bf45440204a90e441023b813a22782125aa87"
 
       def install
         bin.install "awsudo"
-        bash_completion.install "completions/awsudo.bash" => "awsudo"
-        zsh_completion.install "completions/awsudo.zsh" => "_awsudo"
-        fish_completion.install "completions/awsudo.fish"
         # man1.install "manpages/awsudo.1.gz"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/jacobfg/awsudo/releases/download/0.0.2/awsudo_0.0.2_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "b27f9e0cf9b5325f566285bbef03adf2834f215db5314eed1b90019a565df201"
+      url "https://github.com/jacobfg/awsudo/releases/download/0.0.3/awsudo_0.0.3_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "b980c05768d58eab21c25e3e61d34c60ff1192374a4e0572ab7b0be8f617e7d8"
 
       def install
         bin.install "awsudo"
-        bash_completion.install "completions/awsudo.bash" => "awsudo"
-        zsh_completion.install "completions/awsudo.zsh" => "_awsudo"
-        fish_completion.install "completions/awsudo.fish"
         # man1.install "manpages/awsudo.1.gz"
       end
     end
@@ -41,7 +35,7 @@ class Awsudo < Formula
     system "#{bin}/awsudo version"
     # test version to ensure that version number is embedded in binary
     # somehow add os/arch in version output
-    assert_match "awsudo: 0.0.2 (4dba549)", shell_output("#{bin}/awsudo version")
+    assert_match "awsudo: 0.0.3 (22cb04e)", shell_output("#{bin}/awsudo version")
     # assert_match "built by #{tap.user}", shell_output("#{bin}/awsudo version")
   end
 end
