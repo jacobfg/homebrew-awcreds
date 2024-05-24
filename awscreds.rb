@@ -6,13 +6,13 @@ require_relative "./lib/private_strategy.rb"
 class Awscreds < Formula
   desc "AWS Tools for managing credentials"
   homepage "https://github.com/jacobfg/awscreds"
-  version "0.5.2"
+  version "0.5.3"
   license "Apache-2.0"
   depends_on :macos
 
   on_intel do
-    url "https://github.com/jacobfg/awscreds/releases/download/0.5.2/awscreds_0.5.2_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "183c57b0e71dffb96cae319b23c944f4eb033b66709af13ddc3a5524d4d7e5b8"
+    url "https://github.com/jacobfg/awscreds/releases/download/0.5.3/awscreds_0.5.3_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "cf1eb04c20f41311f749faf1ea79619f76a309fa108dc0c975b0abe31bc928ab"
 
     def install
       bin.install "awscreds"
@@ -23,8 +23,8 @@ class Awscreds < Formula
     end
   end
   on_arm do
-    url "https://github.com/jacobfg/awscreds/releases/download/0.5.2/awscreds_0.5.2_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "7076ce1c4c868e42cc46815eb92431a837c243c9faf7868dc40f2fc7d9810977"
+    url "https://github.com/jacobfg/awscreds/releases/download/0.5.3/awscreds_0.5.3_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "420d9d8fbf767741f1ee890f1e8b85272c264621b94fb6531411696ffe9626d9"
 
     def install
       bin.install "awscreds"
@@ -39,7 +39,7 @@ class Awscreds < Formula
     system "#{bin}/awscreds version"
     # test version to ensure that version number is embedded in binary
     # somehow add os/arch in version output
-    assert_match "awscreds: 0.5.2 (cd38a15)", shell_output("#{bin}/awscreds version")
+    assert_match "awscreds: 0.5.3 (b14989c)", shell_output("#{bin}/awscreds version")
     # assert_match "built by #{tap.user}", shell_output("#{bin}/awscreds version")
   end
 end
