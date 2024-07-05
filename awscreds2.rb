@@ -6,29 +6,37 @@ require_relative "./lib/private_strategy.rb"
 class Awscreds2 < Formula
   desc "AWS Tools for managing credentials"
   homepage "https://github.com/jacobfg/awscreds2"
-  version "0.0.2"
+  version "0.0.3"
   license "Apache-2.0"
   depends_on :macos
 
   on_intel do
-    url "https://github.com/jacobfg/awscreds2/releases/download/0.0.2/awscreds2_0.0.2_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "5ca73aa3243d8449b1e411a97777e73f6834b512d42f100f9387403f90f25d35"
+    url "https://github.com/jacobfg/awscreds2/releases/download/0.0.3/awscreds2_0.0.3_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "bde3f9a3c7f521fc90fb304e8fa406a63a94eee8f891a1d3fa714c6b1dec9bcc"
 
     def install
       bin.install "awscreds"
+      bash_completion.install "awscreds.bash" => "awscreds"
+      zsh_completion.install "awscreds.zsh" => "_awscreds"
+      fish_completion.install "awscreds.fish"
+      # man1.install "manpages/awscreds.1.gz"
     end
   end
   on_arm do
-    url "https://github.com/jacobfg/awscreds2/releases/download/0.0.2/awscreds2_0.0.2_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "75e0186d03d7054a6049a897e3cbdee48e86e8f7509a7dd56464213c90c2f13a"
+    url "https://github.com/jacobfg/awscreds2/releases/download/0.0.3/awscreds2_0.0.3_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "606c5f88fe6828bbc76ae09c0b32920de02fa7e0ef709d87bebf67a35c519368"
 
     def install
       bin.install "awscreds"
+      bash_completion.install "awscreds.bash" => "awscreds"
+      zsh_completion.install "awscreds.zsh" => "_awscreds"
+      fish_completion.install "awscreds.fish"
+      # man1.install "manpages/awscreds.1.gz"
     end
   end
 
   test do
     system "#{bin}/awscreds version"
-    assert_match "awscreds: 0.0.2 (f8924ee)", shell_output("#{bin}/awscreds version")
+    assert_match "awscreds: 0.0.3 (6e9590e)", shell_output("#{bin}/awscreds version")
   end
 end
