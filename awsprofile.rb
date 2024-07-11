@@ -6,13 +6,13 @@ require_relative "./lib/private_strategy.rb"
 class Awsprofile < Formula
   desc "AWS tools for managing terminal profiles"
   homepage "https://github.com/jacobfg/awsprofile"
-  version "0.0.3"
+  version "0.0.4"
   license "Apache-2.0"
   depends_on :macos
 
   on_intel do
-    url "https://github.com/jacobfg/awsprofile/releases/download/0.0.3/awsprofile_0.0.3_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "e3dd876efe5c71c01d5124ed3d6f4f2d15683eb7479e5250994fb267653c73ea"
+    url "https://github.com/jacobfg/awsprofile/releases/download/0.0.4/awsprofile_0.0.4_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "5cf299033c59a6ab5fd27d7d2a6452f468335f898a88712c2f2b24d11d5e10fd"
 
     def install
       # bin.install "awsprofile"
@@ -31,8 +31,8 @@ class Awsprofile < Formula
     end
   end
   on_arm do
-    url "https://github.com/jacobfg/awsprofile/releases/download/0.0.3/awsprofile_0.0.3_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "fb12e317e2a363623afa114c952c203b43b452f72d0cdd1ba3709d764a6e1473"
+    url "https://github.com/jacobfg/awsprofile/releases/download/0.0.4/awsprofile_0.0.4_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "921dcda187c15bc674a591dcfa06227fc925a55ccab8ed39a2cd796e3237809f"
 
     def install
       # bin.install "awsprofile"
@@ -53,6 +53,6 @@ class Awsprofile < Formula
 
   test do
     system "#{bin}/awsprofile version"
-    assert_match "awsprofile: 0.0.3 (5688a63)", shell_output("#{bin}/awsprofile version")
+    assert_match "awsprofile: 0.0.4 (cf5f607)", shell_output("#{bin}/awsprofile version")
   end
 end
