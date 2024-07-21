@@ -6,13 +6,13 @@ require_relative "./lib/private_strategy.rb"
 class OktaSessionLogin < Formula
   desc "CLI tools for working with FIT files"
   homepage "https://github.com/jacobfg/okta-session-login"
-  version "0.0.1"
+  version "0.0.2"
   license "Apache-2.0"
   depends_on :macos
 
   on_intel do
-    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.1/okta-session-login_0.0.1_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "6cdfcdc15c4563bb24c6d99785dd1064590232892378cf744b2e49b2be664a52"
+    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.2/okta-session-login_0.0.2_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "fb5bcddcf12a79dd60294f177a9a8487b5ef4e521372e02866595eaaad4625f5"
 
     def install
       # bin.install "okta-session-login"
@@ -31,8 +31,8 @@ class OktaSessionLogin < Formula
     end
   end
   on_arm do
-    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.1/okta-session-login_0.0.1_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "d91fa096eb27def8177b17112b8354c9d3e27cb63be3d38e26e92c652bebdc10"
+    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.2/okta-session-login_0.0.2_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "5d3e9d53087c9c05988e1722e6f2dc5942769fa88fa678f68831b77939c84ed5"
 
     def install
       # bin.install "okta-session-login"
@@ -53,6 +53,6 @@ class OktaSessionLogin < Formula
 
   test do
     system "#{bin}/okta-session-login version"
-    assert_match "okta-session-login: 0.0.1 (45b6b9d)", shell_output("#{bin}/okta-session-login version")
+    assert_match "okta-session-login: 0.0.2 (9d5cef3)", shell_output("#{bin}/okta-session-login version")
   end
 end
