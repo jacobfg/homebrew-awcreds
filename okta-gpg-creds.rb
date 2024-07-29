@@ -6,13 +6,13 @@ require_relative "./lib/private_strategy.rb"
 class OktaGpgCreds < Formula
   desc "CLI tools for Okta creds"
   homepage "https://github.com/jacobfg/okta-session-login"
-  version "0.0.5"
+  version "0.0.6"
   license "Apache-2.0"
   depends_on :macos
 
   on_intel do
-    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.5/okta-session-login_0.0.5_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "284a4f56f60751eea607f4ca45efffcd9142863f299bae9f227a938f63180732"
+    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.6/okta-session-login_0.0.6_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "547c75fe41af333c0542eb4848f837a5cde7917c1fb1bdb6443ab995067f24ce"
 
     def install
       bin.install "okta-gpg-creds" => "okta-gpg-creds"
@@ -20,8 +20,8 @@ class OktaGpgCreds < Formula
     end
   end
   on_arm do
-    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.5/okta-session-login_0.0.5_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "ad5886c6fefac63322bb8c96b0203cb2754c7c457b6dd6b104fe7b665827decb"
+    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.6/okta-session-login_0.0.6_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "5104c16ee796d7d10bbd2531b0bac9856c51ec54cdd868dc6f451522ab7b118a"
 
     def install
       bin.install "okta-gpg-creds" => "okta-gpg-creds"
