@@ -6,13 +6,13 @@ require_relative "./lib/private_strategy.rb"
 class AwsSsoProfile < Formula
   desc "AWS tools for managing terminal profiles"
   homepage "https://github.com/jacobfg/aws-sso-profile"
-  version "0.0.15"
+  version "0.0.16"
   license "Apache-2.0"
   depends_on :macos
 
   on_intel do
-    url "https://github.com/jacobfg/aws-sso-profile/releases/download/0.0.15/aws-sso-profile_0.0.15_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "d837c44f424d53c61ee647c0c25b2faf7a9fcab2cfcddcf4f7d2d118616ecc90"
+    url "https://github.com/jacobfg/aws-sso-profile/releases/download/0.0.16/aws-sso-profile_0.0.16_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "6eb0eedc69643e8cb0b4e442bab4e0d10f5b7b84645b204b6c96724f796bbe70"
 
     def install
       # bin.install "aws-sso-profile"
@@ -31,8 +31,8 @@ class AwsSsoProfile < Formula
     end
   end
   on_arm do
-    url "https://github.com/jacobfg/aws-sso-profile/releases/download/0.0.15/aws-sso-profile_0.0.15_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "f58a53e9356c5a52c4c138d9c68eb0dd2132ffeb8d9956e2b41246f9fe83825f"
+    url "https://github.com/jacobfg/aws-sso-profile/releases/download/0.0.16/aws-sso-profile_0.0.16_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "31a9ff5562a7ab78d40428430bde1ed5c5973d914ca5f9fe50f58ac69d8996ca"
 
     def install
       # bin.install "aws-sso-profile"
@@ -53,6 +53,6 @@ class AwsSsoProfile < Formula
 
   test do
     system "#{bin}/aws-sso-profile version"
-    assert_match "aws-sso-profile: 0.0.15 (3bb2a29)", shell_output("#{bin}/aws-sso-profile version")
+    assert_match "aws-sso-profile: 0.0.16 (75c9b13)", shell_output("#{bin}/aws-sso-profile version")
   end
 end
