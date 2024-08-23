@@ -6,13 +6,13 @@ require_relative "./lib/private_strategy.rb"
 class JacobfgTools < Formula
   desc "CLI tools"
   homepage "https://github.com/jacobfg/okta-session-login"
-  version "0.0.6"
+  version "0.0.7"
   license "Apache-2.0"
   depends_on :macos
 
   on_intel do
-    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.6/okta-session-login_0.0.6_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "547c75fe41af333c0542eb4848f837a5cde7917c1fb1bdb6443ab995067f24ce"
+    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.7/okta-session-login_0.0.7_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "28f1a6d0922f469ab1a3b26115a1d8b6dc5459e5690908bc44c6ea17bf72d1b3"
 
     def install
       bin.install "cert-details" => "cert-details"
@@ -21,12 +21,13 @@ class JacobfgTools < Formula
       bin.install "httpencode" => "httpencode"
       bin.install "osx-app-setup" => "osx-app-setup"
       bin.install "ini-print" => "ini-print"
+      bin.install "cli-select" => "cli-select"
       prefix.install_metafiles
     end
   end
   on_arm do
-    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.6/okta-session-login_0.0.6_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "5104c16ee796d7d10bbd2531b0bac9856c51ec54cdd868dc6f451522ab7b118a"
+    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.7/okta-session-login_0.0.7_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "98d0677d684e7e6d6f0dd5230050ff1bd58bbd597b276ca22c3c9d545625e247"
 
     def install
       bin.install "cert-details" => "cert-details"
@@ -35,6 +36,7 @@ class JacobfgTools < Formula
       bin.install "httpencode" => "httpencode"
       bin.install "osx-app-setup" => "osx-app-setup"
       bin.install "ini-print" => "ini-print"
+      bin.install "cli-select" => "cli-select"
       prefix.install_metafiles
     end
   end
