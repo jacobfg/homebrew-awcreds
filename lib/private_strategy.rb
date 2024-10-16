@@ -29,18 +29,18 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
 
   private
 
-  # def validate_github_repository_access!
-  #   # Test access to the repository
-  #   GitHub.repository(@owner, @repo)
-  # rescue GitHub::HTTPNotFoundError
-  #   # We only handle HTTPNotFoundError here,
-  #   # becase AuthenticationFailedError is handled within util/github.
-  #   message = <<~EOS
-  #     HOMEBREW_GITHUB_API_TOKEN can not access the repository: #{@owner}/#{@repo}
-  #     This token may not have permission to access the repository or the url of formula may be incorrect.
-  #   EOS
-  #   raise CurlDownloadStrategyError, message
-  # end
+  def validate_github_repository_access!
+    # Test access to the repository
+    GitHub.repository(@owner, @repo)
+  rescue GitHub::API::HTTPNotFoundError
+    # We only handle HTTPNotFoundError here,
+    # becase AuthenticationFailedError is handled within util/github.
+    message = <<~EOS
+      HOMEBREW_GITHUB_API_TOKEN can not access the repository: #{@owner}/#{@repo}
+      This token may not have permission to access the repository or the url of formula may be incorrect.
+    EOS
+    raise CurlDownloadStrategyError, message
+  end
 
   def set_github_token
     @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
