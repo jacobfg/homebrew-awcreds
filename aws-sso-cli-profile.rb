@@ -6,13 +6,13 @@ require_relative "./lib/private_strategy.rb"
 class AwsSsoCliProfile < Formula
   desc "AWS tools for managing terminal profiles"
   homepage "https://github.com/jacobfg/aws-sso-cli-profile"
-  version "0.0.25"
+  version "0.0.26"
   license "Apache-2.0"
   depends_on :macos
 
-  on_intel do
-    url "https://github.com/jacobfg/aws-sso-cli-profile/releases/download/0.0.25/aws-sso-cli-profile_0.0.25_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "b6e10cd9b5d019208d7305d92a446e8f9e551681abd95c947dcb9f9ec67dc80e"
+  if Hardware::CPU.intel?
+    url "https://github.com/jacobfg/aws-sso-cli-profile/releases/download/0.0.26/aws-sso-cli-profile_0.0.26_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "3ed795a23b0d0a1b11887d38db2508db79e8f6557a13b714e05861e2bb00c816"
 
     def install
       # bin.install "aws-sso-cli-profile"
@@ -30,9 +30,9 @@ class AwsSsoCliProfile < Formula
       # man1.install "manpages/aws-sso-cli-profile.1.gz"
     end
   end
-  on_arm do
-    url "https://github.com/jacobfg/aws-sso-cli-profile/releases/download/0.0.25/aws-sso-cli-profile_0.0.25_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "81fdf17c36211b33712ae728c77528d6ea95ad41a3b3c0fe3923859281338b9b"
+  if Hardware::CPU.arm?
+    url "https://github.com/jacobfg/aws-sso-cli-profile/releases/download/0.0.26/aws-sso-cli-profile_0.0.26_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "f9774961647dd9f3c300f73a349ff4e8be21499686d8cac9cb876807d6c18a7f"
 
     def install
       # bin.install "aws-sso-cli-profile"
@@ -53,6 +53,6 @@ class AwsSsoCliProfile < Formula
 
   test do
     system "#{bin}/aws-sso-cli-profile version"
-    assert_match "aws-sso-cli-profile: 0.0.25 (29679e1)", shell_output("#{bin}/aws-sso-cli-profile version")
+    assert_match "aws-sso-cli-profile: 0.0.26 (7f9734b)", shell_output("#{bin}/aws-sso-cli-profile version")
   end
 end
