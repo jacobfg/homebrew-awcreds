@@ -6,53 +6,53 @@ require_relative "./lib/private_strategy.rb"
 class AwsSsoCliProfile < Formula
   desc "AWS tools for managing terminal profiles"
   homepage "https://github.com/jacobfg/aws-sso-cli-profile"
-  version "0.0.29"
+  version "0.0.30"
   license "Apache-2.0"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/jacobfg/aws-sso-cli-profile/releases/download/0.0.29/aws-sso-cli-profile_0.0.29_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "9cdca2aa97def99a4303b0035baecb4ef155bf75fec5146df6c866ed78c3054e"
+    url "https://github.com/jacobfg/aws-sso-cli-profile/releases/download/0.0.30/aws-sso-cli-profile_0.0.30_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "c9981df3c05fed69592851f7c8d43b7e64da62b61ca48a81160cc5d7250a58ad"
 
     def install
-      # bin.install "aws-sso-profile"
-      # bash_completion.install "aws-sso-profile.bash" => "aws-sso-profile"
-      # zsh_completion.install "aws-sso-profile.zsh" => "_aws-sso-profile"
-      # fish_completion.install "aws-sso-profile.fish"
+      # bin.install "aws-sso-cli-profile"
+      # bash_completion.install "aws-sso-cli-profile.bash" => "aws-sso-cli-profile"
+      # zsh_completion.install "aws-sso-cli-profile.zsh" => "_aws-sso-cli-profile"
+      # fish_completion.install "aws-sso-cli-profile.fish"
 
-      bin.install "aws-sso-profile" => "aws-sso-profile"
-      output = Utils.popen_read("SHELL=bash PATH=#{bin}:#{PATH} aws-sso-profile completion bash")
-      (bash_completion/"aws-sso-profile").write output
-      output = Utils.popen_read("SHELL=zsh PATH=#{bin}:#{PATH} aws-sso-profile completion zsh")
-      (zsh_completion/"_aws-sso-profile").write output
+      bin.install "aws-sso-cli-profile" => "aws-sso-cli-profile"
+      output = Utils.popen_read("SHELL=bash PATH=#{bin}:#{PATH} aws-sso-cli-profile completion bash")
+      (bash_completion/"aws-sso-cli-profile").write output
+      output = Utils.popen_read("SHELL=zsh PATH=#{bin}:#{PATH} aws-sso-cli-profile completion zsh")
+      (zsh_completion/"_aws-sso-cli-profile").write output
       prefix.install_metafiles
 
-      # man1.install "manpages/aws-sso-profile.1.gz"
+      # man1.install "manpages/aws-sso-cli-profile.1.gz"
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/jacobfg/aws-sso-cli-profile/releases/download/0.0.29/aws-sso-cli-profile_0.0.29_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "1ebab8ec8f0b5c200b8aad4ef98c82bb4e1d5b86477c2019e5a9f88c62a523de"
+    url "https://github.com/jacobfg/aws-sso-cli-profile/releases/download/0.0.30/aws-sso-cli-profile_0.0.30_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "0ab1b50ffc33a2ce8b99b92872b1f9aa3b44601de05a427b20e7deef7be7304b"
 
     def install
-      # bin.install "aws-sso-profile"
-      # bash_completion.install "aws-sso-profile.bash" => "aws-sso-profile"
-      # zsh_completion.install "aws-sso-profile.zsh" => "_aws-sso-profile"
-      # fish_completion.install "aws-sso-profile.fish"
+      # bin.install "aws-sso-cli-profile"
+      # bash_completion.install "aws-sso-cli-profile.bash" => "aws-sso-cli-profile"
+      # zsh_completion.install "aws-sso-cli-profile.zsh" => "_aws-sso-cli-profile"
+      # fish_completion.install "aws-sso-cli-profile.fish"
 
-      bin.install "aws-sso-profile" => "aws-sso-profile"
-      output = Utils.popen_read("SHELL=bash PATH=#{bin}:#{PATH} aws-sso-profile completion bash")
-      (bash_completion/"aws-sso-profile").write output
-      output = Utils.popen_read("SHELL=zsh PATH=#{bin}:#{PATH} aws-sso-profile completion zsh")
-      (zsh_completion/"_aws-sso-profile").write output
+      bin.install "aws-sso-cli-profile" => "aws-sso-cli-profile"
+      output = Utils.popen_read("SHELL=bash PATH=#{bin}:#{PATH} aws-sso-cli-profile completion bash")
+      (bash_completion/"aws-sso-cli-profile").write output
+      output = Utils.popen_read("SHELL=zsh PATH=#{bin}:#{PATH} aws-sso-cli-profile completion zsh")
+      (zsh_completion/"_aws-sso-cli-profile").write output
       prefix.install_metafiles
 
-      # man1.install "manpages/aws-sso-profile.1.gz"
+      # man1.install "manpages/aws-sso-cli-profile.1.gz"
     end
   end
 
   test do
-    system "#{bin}/aws-sso-profile version"
-    assert_match "aws-sso-profile: 0.0.29 (3b70559)", shell_output("#{bin}/aws-sso-profile version")
+    system "#{bin}/aws-sso-cli-profile version"
+    assert_match "aws-sso-cli-profile: 0.0.30 (f2943e0)", shell_output("#{bin}/aws-sso-cli-profile version")
   end
 end
