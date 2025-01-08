@@ -6,13 +6,13 @@ require_relative "./lib/private_strategy.rb"
 class JacobfgTools < Formula
   desc "CLI tools"
   homepage "https://github.com/jacobfg/okta-session-login"
-  version "0.0.7"
+  version "0.0.8"
   license "Apache-2.0"
   depends_on :macos
 
-  on_intel do
-    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.7/okta-session-login_0.0.7_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "28f1a6d0922f469ab1a3b26115a1d8b6dc5459e5690908bc44c6ea17bf72d1b3"
+  if Hardware::CPU.intel?
+    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.8/okta-session-login_0.0.8_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "528171d284131eeba2ca76bb6f57d4745acb2e6f4e89dd14da5bd92b98298a0d"
 
     def install
       bin.install "cert-details" => "cert-details"
@@ -25,9 +25,9 @@ class JacobfgTools < Formula
       prefix.install_metafiles
     end
   end
-  on_arm do
-    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.7/okta-session-login_0.0.7_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "98d0677d684e7e6d6f0dd5230050ff1bd58bbd597b276ca22c3c9d545625e247"
+  if Hardware::CPU.arm?
+    url "https://github.com/jacobfg/okta-session-login/releases/download/0.0.8/okta-session-login_0.0.8_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "b263e75ae54ca25e82d37ad02a4a60a6046909637c66e18f684e63b3a2ec246e"
 
     def install
       bin.install "cert-details" => "cert-details"
